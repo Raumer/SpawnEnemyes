@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemyes : MonoBehaviour
+public class EnemyesSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject _template;
     [SerializeField] private Transform _spawnPoints;
-    //[SerializeField] private int _actions;
     private Transform[] _points;
 
-    void Start()
+    private void Start()
     {
         _points = new Transform[_spawnPoints.childCount];
 
@@ -18,10 +17,10 @@ public class SpawnEnemyes : MonoBehaviour
             _points[i] = _spawnPoints.GetChild(i);
         }
 
-        StartCoroutine(DelaySpawn());
+        StartCoroutine(Spawn());
     }
 
-    private IEnumerator DelaySpawn()
+    private IEnumerator Spawn()
     {
         foreach (var point in _points)
         { 
